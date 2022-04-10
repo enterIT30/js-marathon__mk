@@ -9,6 +9,9 @@ const player1 = {
   img: 'http://reactmarathon-api.herokuapp.com/assets/scorpion.gif',
   weapon: ['kunai', 'sword', 'fire'],
   attack: console.log('Scorpion' + ' Fight...'),
+  changeHP: changeHP,
+  elHP: elHP,
+  renderHP: renderHP,
 };
 
 const player2 = {
@@ -18,6 +21,9 @@ const player2 = {
   img: 'http://reactmarathon-api.herokuapp.com/assets/subzero.gif',
   weapon: ['sword', 'axe', 'ice'],
   attack: console.log('Sub-Zero' + ' Fight...'),
+  changeHP: changeHP,
+  elHP: elHP,
+  renderHP: renderHP,
 };
 
 
@@ -29,7 +35,6 @@ function createElement(tag, className) {
 
   return elem;
 }
-
 
 function createPlayer(playerNumber) {
   const player = createElement('div', 'player' + playerNumber.player);
@@ -53,47 +58,76 @@ function createPlayer(playerNumber) {
   return player;
 }
 
-function changeHP(playerNumber, playerNumber2) {
-  const playerLife = document.querySelector('.player'+ playerNumber.player +' .life');
-  playerNumber.hp -= Math.ceil(Math.random() * 20);
-  playerLife.style.width = playerNumber.hp + '%';
+//==================================================================================
 
-  console.log(playerLife.style.width);
 
-  if (playerNumber.hp <= 0 && playerNumber2.hp >= 1) {
-    arenas.appendChild(playerWins(playerNumber.name, playerNumber2.name));
-    playerLife.style.width = 0 + '%';
+function changeHP(number) {
+
+  if (this.hp >= 1) {
+    this.hp -= number;
+  }
+
+  if (this.hp <= 0) {
+    this.hp = 0;
+  }
+}
+
+
+function elHP() {
+  const playerLife = document.querySelector('.player'+ this.player +' .life');
+  return playerLife;
+}
+
+//player1.elHP();
+//player2.elHP();
+
+
+function renderHP(life) {
+  life.style.width = this.hp + '%';
+}
+
+//player1.renderHP(player1.elHP());
+//player2.renderHP(player2.elHP());
+
+
+
+
+
+
+
+
+
+function playerWins(name) {
+  const loseTitle = createElement('div', 'winsTitle');
+  if (name) {
+    loseTitle.innerText = name + ' wins';
+  } else {
+    loseTitle.innerText = 'draw';
+  }
+
+  return loseTitle;
+}
+
+function getRandom(number) {
+  return Math.ceil(Math.random() * number);
+}
+
+randomButton.addEventListener("click", function() {
+  player1.changeHP(getRandom(20));
+  player2.changeHP(getRandom(20));
+
+  if (player1.hp === 0 || player2.hp === 0) {
     randomButton.disabled = true;
     randomButton.style.display = 'none';
   }
 
-/*   if (playerNumber.hp <= 0 && playerNumber2.hp <= 0) {
-    arenas.appendChild(playerLose());
+  if (player1.hp === 0 && player1.hp < player2.hp) {
+    arenas.appendChild(playerWins(player2.name));
+  } else if (player2.hp === 0 && player2.hp < player1.hp) {
+    arenas.appendChild(playerWins(player1.name));
+  } else if (player1.hp <= 0 && player2.hp <= 0) {
+    arenas.appendChild(playerWins());
   }
- */
-}
-
-
-function playerLose() {
-  const loseTitle = createElement('div', 'loseTitle');
-  loseTitle.innerText = 'standoff';
-  return loseTitle;
-}
-
-function playerWins(name, name2) {
-  const winsTitle = createElement('div', 'winsTitle');
-  winsTitle.innerText = name2 + ' wins';
-  return winsTitle;
-}
-
-
-
-randomButton.addEventListener("click", function (e) {
-  console.log('Hola');
-
-  changeHP(player1, player2);
-  changeHP(player2, player1);
-
 
 });
 
