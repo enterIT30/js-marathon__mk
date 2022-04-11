@@ -287,7 +287,7 @@ body {
 
 .reloadWrap {
   position: absolute;
-  top: 10%;
+  top: 50%;
   z-index: 1000;
   left: 50%;
   transform: translate(-50%, 0%);

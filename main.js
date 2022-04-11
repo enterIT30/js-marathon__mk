@@ -11,7 +11,7 @@ const player1 = {
   attack: console.log('Scorpion' + ' Fight...'),
   changeHP: changeHP,
   elHP: elHP,
-  renderHP: renderHP,
+  renderHP:renderHP,
 };
 
 const player2 = {
@@ -23,7 +23,7 @@ const player2 = {
   attack: console.log('Sub-Zero' + ' Fight...'),
   changeHP: changeHP,
   elHP: elHP,
-  renderHP: renderHP,
+  renderHP:renderHP,
 };
 
 
@@ -36,35 +36,38 @@ function createElement(tag, className) {
   return elem;
 }
 
-function createPlayer(playerNumber) {
-  const player = createElement('div', 'player' + playerNumber.player);
+function createPlayer(player) {
+  const players = createElement('div', 'player' + player.player);
   const progressbar = createElement('div', 'progressbar');
   const character = createElement('div', 'character');
   const life = createElement('div', 'life');
   const name = createElement('div', 'name');
   const img = createElement('img');
 
-  player.appendChild(progressbar);
-  player.appendChild(character);
+  players.appendChild(progressbar);
+  players.appendChild(character);
   progressbar.appendChild(life);
   progressbar.appendChild(name);
   character.appendChild(img);
 
 
-  life.style.width = playerNumber.hp + '%';
-  name.innerText = playerNumber.name;
-  img.src = playerNumber.img;
+  life.style.width = player.hp + '%';
+  name.innerText = player.name;
+  img.src = player.img;
 
-  return player;
+  return players;
 }
 
 //==================================================================================
 
 
-function changeHP(number) {
+function changeHP(random) {
+
+  //!=======================================
+  console.log(this.hp);
 
   if (this.hp >= 1) {
-    this.hp -= number;
+    this.hp -= random;
   }
 
   if (this.hp <= 0) {
@@ -72,29 +75,29 @@ function changeHP(number) {
   }
 }
 
+//? Первый вариант всё в функции elHP (закоментировать renderHP:renderHP,)
+
+/* function elHP() {
+  let life = document.querySelector('.player'+ this.player +' .life');
+  life.style.width = this.hp + '%';
+  return life;
+}
+ */
+//?===========================================
+
+
+//? Вторй вариант с elHP и renderHP, но с вызовом player1.renderHP(player1.elHP());
 
 function elHP() {
-  const playerLife = document.querySelector('.player'+ this.player +' .life');
-  return playerLife;
+  let life = document.querySelector('.player'+ this.player +' .life');
+  return life;
 }
-
-//player1.elHP();
-//player2.elHP();
-
 
 function renderHP(life) {
   life.style.width = this.hp + '%';
 }
 
-//player1.renderHP(player1.elHP());
-//player2.renderHP(player2.elHP());
-
-
-
-
-
-
-
+//?===========================================
 
 
 function playerWins(name) {
@@ -112,13 +115,38 @@ function getRandom(number) {
   return Math.ceil(Math.random() * number);
 }
 
+
+function createReloadButtom() {
+  const reloadWrap = createElement('div', 'reloadWrap');
+  const buttonRestart = createElement('button', 'button');
+
+  buttonRestart.innerText = 'Restart';
+
+  reloadWrap.appendChild(buttonRestart);
+
+  buttonRestart.addEventListener("click", function () {
+    window.location.reload();
+  });
+
+  return reloadWrap;
+}
+
+
 randomButton.addEventListener("click", function() {
   player1.changeHP(getRandom(20));
   player2.changeHP(getRandom(20));
 
+  //!===============================================
+
+  player1.renderHP(player1.elHP());
+  player2.renderHP(player2.elHP());
+
+  //!===============================================
+
   if (player1.hp === 0 || player2.hp === 0) {
     randomButton.disabled = true;
-    randomButton.style.display = 'none';
+    //randomButton.style.display = 'none';
+    arenas.appendChild(createReloadButtom());
   }
 
   if (player1.hp === 0 && player1.hp < player2.hp) {
@@ -132,5 +160,7 @@ randomButton.addEventListener("click", function() {
 });
 
 
+
 arenas.appendChild(createPlayer(player1));
 arenas.appendChild(createPlayer(player2));
+
