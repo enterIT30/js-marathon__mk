@@ -1,6 +1,23 @@
 const arenas = document.querySelector('.arenas');
-const randomButton = document.querySelector('.button');
+const fightButton = document.querySelector('.button');
 
+const form = document.querySelector('form.control');
+const HIT = {
+  head: 30,
+  body: 25,
+  foot: 20,
+};
+const ATTACK = ['head', 'body', 'foot'];
+
+function enemyAttack() {
+  let hit = ATTACK[getRandom(2)];
+  let defence = ATTACK[getRandom(2)];
+  return {
+    value: HIT[hit],
+    hit,
+    defence,
+  };
+}
 
 const player1 = {
   player: 1,
@@ -63,9 +80,9 @@ function createPlayer(player) {
 }
 
 
-function changeHP(random) {
+function changeHP(hit) {
   if (this.hp >= 1) {
-    this.hp -= random;
+    this.hp -= hit;
   }
 
   if (this.hp <= 0) {
@@ -98,29 +115,75 @@ function getRandom(num) {
 
 
 function createReloadButtom() {
-  const reloadWrap = createElement('div', 'reloadWrap');
-  const buttonRestart = createElement('button', 'button');
-  buttonRestart.innerText = 'Restart';
+  const reloadButtonDiv = createElement('div', 'reloadWrap');
+  const reloadButton = createElement('button', 'button');
+  reloadButton.innerText = 'Restart';
 
-  buttonRestart.addEventListener("click", function () {
+  reloadButton.addEventListener('click', function() {
     window.location.reload();
   });
 
-  reloadWrap.appendChild(buttonRestart);
-  arenas.appendChild(reloadWrap);
+  reloadButtonDiv.appendChild(reloadButton);
+  arenas.appendChild(reloadButtonDiv);
 }
 
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
 
-randomButton.addEventListener('click', function() {
-  player1.changeHP(getRandom(20));
-  player2.changeHP(getRandom(20));
+  let myAttack ={};
 
-  player1.renderHP();
-  player2.renderHP();
+  for (let i = 0; i < form.length; i++) {
+    let item = form[i];
+
+    if (item.checked === true && item.name === 'hit') {
+      myAttack[item.name] = item.value;
+      myAttack.value = HIT[item.value];
+    } else if (item.checked === true && item.name === 'defence') {
+      myAttack[item.name] = item.value;
+    }
+  }
+
+  let botAttack = enemyAttack();
+
+  function changeAndRenderHP(player, attack) {
+    player.changeHP(attack.value);
+    player.renderHP();
+  }
+  
+
+
+
+  if (botAttack.hit === myAttack.defence) {
+    console.log('myDefence');
+    changeAndRenderHP(player2, myAttack);
+
+
+/*     player2.changeHP(myAttack.value);
+    player2.renderHP(); */
+  } else if (myAttack.hit === botAttack.defence) {
+    console.log('botDefence');
+    changeAndRenderHP(player1, botAttack);
+/*     player1.changeHP(botAttack.value);
+    player1.renderHP(); */
+  } else {
+    changeAndRenderHP(player2, myAttack);
+
+    changeAndRenderHP(player1, botAttack);
+/*     player1.changeHP(botAttack.value);
+    player1.renderHP();
+
+    player2.changeHP(myAttack.value);
+    player2.renderHP(); */
+
+    console.log(botAttack.value);
+    console.log(myAttack.value);
+
+
+  }
 
   if (player1.hp === 0 || player2.hp === 0) {
-    randomButton.disabled = true;
-    //randomButton.style.display = 'none';
+    fightButton.disabled = true;
+
     createReloadButtom();
   }
 
@@ -133,8 +196,6 @@ randomButton.addEventListener('click', function() {
   }
 
 });
-
-
 
 arenas.appendChild(createPlayer(player1));
 arenas.appendChild(createPlayer(player2));
