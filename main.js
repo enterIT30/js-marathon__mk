@@ -18,34 +18,34 @@ const logs = {
       'Результат боя: [playerLose] - жертва, [playerWins] - убийца',
   ],
   hit: [
-      '[HIT: hit] - [playerDefence] пытался сконцентрироваться, но [playerKick] разбежавшись раздробил копчиком левое ухо врага.',
-      '[HIT: hit] - [playerDefence] расстроился, как вдруг, неожиданно [playerKick] случайно раздробил грудью грудину противника.',
-      '[HIT: hit] - [playerDefence] зажмурился, а в это время [playerKick], прослезившись, раздробил кулаком пах оппонента.',
-      '[HIT: hit] - [playerDefence] чесал <вырезано цензурой>, и внезапно неустрашимый [playerKick] отчаянно размозжил грудью левый бицепс оппонента.',
-      '[HIT: hit] - [playerDefence] задумался, но внезапно [playerKick] случайно влепил грубый удар копчиком в пояс оппонента.',
-      '[HIT: hit] - [playerDefence] ковырялся в зубах, но [playerKick] проснувшись влепил тяжелый удар пальцем в кадык врага.',
-      '[HIT: hit] - [playerDefence] вспомнил что-то важное, но внезапно [playerKick] зевнув, размозжил открытой ладонью челюсть противника.',
-      '[HIT: hit] - [playerDefence] осмотрелся, и в это время [playerKick] мимоходом раздробил стопой аппендикс соперника.',
-      '[HIT: hit] - [playerDefence] кашлянул, но внезапно [playerKick] показав палец, размозжил пальцем грудь соперника.',
-      '[HIT: hit] - [playerDefence] пытался что-то сказать, а жестокий [playerKick] проснувшись размозжил копчиком левую ногу противника.',
-      '[HIT: hit] - [playerDefence] забылся, как внезапно безумный [playerKick] со скуки, влепил удар коленом в левый бок соперника.',
-      '[HIT: hit] - [playerDefence] поперхнулся, а за это [playerKick] мимоходом раздробил коленом висок врага.',
-      '[HIT: hit] - [playerDefence] расстроился, а в это время наглый [playerKick] пошатнувшись размозжил копчиком губы оппонента.',
-      '[HIT: hit] - [playerDefence] осмотрелся, но внезапно [playerKick] робко размозжил коленом левый глаз противника.',
-      '[HIT: hit] - [playerDefence] осмотрелся, а [playerKick] вломил дробящий удар плечом, пробив блок, куда обычно не бьют оппонента.',
-      '[HIT: hit] - [playerDefence] ковырялся в зубах, как вдруг, неожиданно [playerKick] отчаянно размозжил плечом мышцы пресса оппонента.',
-      '[HIT: hit] - [playerDefence] пришел в себя, и в это время [playerKick] провел разбивающий удар кистью руки, пробив блок, в голень противника.',
-      '[HIT: hit] - [playerDefence] пошатнулся, а в это время [playerKick] хихикая влепил грубый удар открытой ладонью по бедрам врага.',
+      '[playerDefence] пытался сконцентрироваться, но [playerKick] разбежавшись раздробил копчиком левое ухо врага.',
+      '[playerDefence] расстроился, как вдруг, неожиданно [playerKick] случайно раздробил грудью грудину противника.',
+      '[playerDefence] зажмурился, а в это время [playerKick], прослезившись, раздробил кулаком пах оппонента.',
+      '[playerDefence] чесал <вырезано цензурой>, и внезапно неустрашимый [playerKick] отчаянно размозжил грудью левый бицепс оппонента.',
+      '[playerDefence] задумался, но внезапно [playerKick] случайно влепил грубый удар копчиком в пояс оппонента.',
+      '[playerDefence] ковырялся в зубах, но [playerKick] проснувшись влепил тяжелый удар пальцем в кадык врага.',
+      '[playerDefence] вспомнил что-то важное, но внезапно [playerKick] зевнув, размозжил открытой ладонью челюсть противника.',
+      '[playerDefence] осмотрелся, и в это время [playerKick] мимоходом раздробил стопой аппендикс соперника.',
+      '[playerDefence] кашлянул, но внезапно [playerKick] показав палец, размозжил пальцем грудь соперника.',
+      '[playerDefence] пытался что-то сказать, а жестокий [playerKick] проснувшись размозжил копчиком левую ногу противника.',
+      '[playerDefence] забылся, как внезапно безумный [playerKick] со скуки, влепил удар коленом в левый бок соперника.',
+      '[playerDefence] поперхнулся, а за это [playerKick] мимоходом раздробил коленом висок врага.',
+      '[playerDefence] расстроился, а в это время наглый [playerKick] пошатнувшись размозжил копчиком губы оппонента.',
+      '[playerDefence] осмотрелся, но внезапно [playerKick] робко размозжил коленом левый глаз противника.',
+      '[playerDefence] осмотрелся, а [playerKick] вломил дробящий удар плечом, пробив блок, куда обычно не бьют оппонента.',
+      '[playerDefence] ковырялся в зубах, как вдруг, неожиданно [playerKick] отчаянно размозжил плечом мышцы пресса оппонента.',
+      '[playerDefence] пришел в себя, и в это время [playerKick] провел разбивающий удар кистью руки, пробив блок, в голень противника.',
+      '[playerDefence] пошатнулся, а в это время [playerKick] хихикая влепил грубый удар открытой ладонью по бедрам врага.',
   ],
   defence: [
-      '[DEFENCE] [HIT: hit] - [playerKick] потерял момент и храбрый [playerDefence] отпрыгнул от удара открытой ладонью в ключицу.',
-      '[DEFENCE] [HIT: hit] - [playerKick] не контролировал ситуацию, и потому [playerDefence] поставил блок на удар пяткой в правую грудь.',
-      '[DEFENCE] [HIT: hit] - [playerKick] потерял момент и [playerDefence] поставил блок на удар коленом по селезенке.',
-      '[DEFENCE] [HIT: hit] - [playerKick] поскользнулся и задумчивый [playerDefence] поставил блок на тычок головой в бровь.',
-      '[DEFENCE] [HIT: hit] - [playerKick] старался провести удар, но непобедимый [playerDefence] ушел в сторону от удара копчиком прямо в пятку.',
-      '[DEFENCE] [HIT: hit] - [playerKick] обманулся и жестокий [playerDefence] блокировал удар стопой в солнечное сплетение.',
-      '[DEFENCE] [HIT: hit] - [playerKick] не думал о бое, потому расстроенный [playerDefence] отпрыгнул от удара кулаком куда обычно не бьют.',
-      '[DEFENCE] [HIT: hit] - [playerKick] обманулся и жестокий [playerDefence] блокировал удар стопой в солнечное сплетение.'
+      '[playerKick] потерял момент и храбрый [playerDefence] отпрыгнул от удара открытой ладонью в ключицу.',
+      '[playerKick] не контролировал ситуацию, и потому [playerDefence] поставил блок на удар пяткой в правую грудь.',
+      '[playerKick] потерял момент и [playerDefence] поставил блок на удар коленом по селезенке.',
+      '[playerKick] поскользнулся и задумчивый [playerDefence] поставил блок на тычок головой в бровь.',
+      '[playerKick] старался провести удар, но непобедимый [playerDefence] ушел в сторону от удара копчиком прямо в пятку.',
+      '[playerKick] обманулся и жестокий [playerDefence] блокировал удар стопой в солнечное сплетение.',
+      '[playerKick] не думал о бое, потому расстроенный [playerDefence] отпрыгнул от удара кулаком куда обычно не бьют.',
+      '[playerKick] обманулся и жестокий [playerDefence] блокировал удар стопой в солнечное сплетение.'
   ],
   draw: 'Ничья - это тоже победа!'
 };
@@ -159,10 +159,6 @@ function getRandom(num) {
  * @param {string} className
  * @returns {HTMLElement}
  */
-
-
-// Функция возвращает элемент
-
 function createReloadButtom() {
   const reloadButtonDiv = createElement('div', 'reloadWrap');
   const reloadButton = createElement('button', 'button');
@@ -177,7 +173,7 @@ function createReloadButtom() {
 }
 
 /**
- * 
+ 
  * @returns {{hit: (string), defence: (string),value: number}}
  */
 function enemyAttack() {
@@ -191,7 +187,6 @@ function enemyAttack() {
     defence,
   };
 }
-
 
 function playerAttack() {
   let attack ={};
@@ -224,13 +219,13 @@ function showResult() {
 
   if (player1.hp === 0 && player1.hp < player2.hp) {
     arenas.appendChild(playerWins(player2.name));
-    endLog(player2, player1);
+    generateLogs('end', player2, player1);
   } else if (player2.hp === 0 && player2.hp < player1.hp) {
     arenas.appendChild(playerWins(player1.name));
-    endLog(player1, player2);
+    generateLogs('end', player1, player2);
   } else if (player1.hp <= 0 && player2.hp <= 0) {
     arenas.appendChild(playerWins());
-    drawLog();
+    generateLogs('draw');
   }
 }
 
@@ -263,33 +258,35 @@ function myFormatDate() {
 }
 let timeDate = myFormatDate();
 
-function generateLogs(type, player1, player2, hit) {
-  const text = logs[type][getRandom(type.length - 1)].replace('[playerDefence]', player1.name).replace('[playerKick]', player2.name).replace('hit', hit);
-  let chatText = `<p>${text}</p>`;
-  chat.insertAdjacentHTML('afterbegin', chatText);
+generateLogs('start', player1, player2);
+
+function generateLogs(type, playerHit, playerDef, hit, def) {
+  let typeLogs = type;
+
+  switch (typeLogs) {
+    case 'hit':
+    case 'defence':
+      const text = logs[type][getRandom(type.length - 1)].replace('[playerDefence]', playerDef.name).replace('[playerKick]', playerHit.name);
+      let chatText = `<p>${timeDate} ${text}
+      ${playerDef.name} [HIT - ${hit}] [DAMAGE - ${def}]  [HP ${playerDef.hp}/100]</p>`;
+      chat.insertAdjacentHTML('afterbegin', chatText);
+      break;
+    case 'start':
+      let textStart = logs.start.replace('[time]', timeDate).replace('[player1]', playerHit.name).replace('[player2]', playerDef.name);
+      let startTextEl = `<p>${textStart}</p>`;
+      chat.insertAdjacentHTML('afterbegin', startTextEl);
+      break;
+    case 'end':
+      const textEnd = logs.end[getRandom(logs.end.length - 1)].replace('[playerWins]', playerHit.name).replace('[playerLose]', playerDef.name);
+      let endTextEl = `<p>${textEnd}</p>`;
+      chat.insertAdjacentHTML('afterbegin', endTextEl);
+      break;
+    case 'draw':
+      const textDraw = logs.draw;
+      const drawTextEl = `<p>${textDraw}</p>`;
+      chat.insertAdjacentHTML('afterbegin', drawTextEl);
+  }
 }
-
-/* [time] [text] [-player.hp] [hp/100] */
-
-function startLog(player1, player2) {
-  let textStart = logs.start.replace('[time]', timeDate).replace('[player1]', player1.name).replace('[player2]', player2.name);
-  let startTextEl = `<p>${textStart}</p>`;
-  chat.insertAdjacentHTML('afterbegin', startTextEl);
-}
-startLog(player1, player2);
-
-function endLog(playerWins, playerLose) {
-  const textEnd = logs.end[getRandom(logs.end.length - 1)].replace('[playerWins]', playerWins.name).replace('[playerLose]', playerLose.name);
-  let endTextEl = `<p>${textEnd}</p>`;
-  chat.insertAdjacentHTML('afterbegin', endTextEl);
-}
-
-function drawLog() {
-  const textDraw = logs.draw;
-  const drawTextEl = `<p>${textDraw}</p>`;
-  chat.insertAdjacentHTML('afterbegin', drawTextEl);
-}
-
 
 
 form.addEventListener('submit', function(e) {
@@ -299,11 +296,11 @@ form.addEventListener('submit', function(e) {
   let myAttack = playerAttack();
 
   if (botAttack.hit === myAttack.defence) {
-    generateLogs('defence', player1, player2, myAttack.value);
+    generateLogs('defence', player2, player1, myAttack.value, 0);
     console.log(myAttack.value);
     changeAndRenderHP(player2, myAttack);
   } else if (myAttack.hit === botAttack.defence) {
-    generateLogs('defence', player2, player1, botAttack.value);
+    generateLogs('defence', player1, player2, botAttack.value, 0);
     console.log(botAttack.value);
     changeAndRenderHP(player1, botAttack);
   } else {
@@ -312,8 +309,9 @@ form.addEventListener('submit', function(e) {
 
     console.log(myAttack.value);
     console.log(botAttack.value);
-    generateLogs('hit', player1, player2, myAttack.value);
-    generateLogs('hit', player2, player1, botAttack.value);
+
+    generateLogs('hit', player2, player1, myAttack.value, botAttack.value);
+    generateLogs('hit', player1, player2, botAttack.value, myAttack.value);
   }
 
   showResult();
