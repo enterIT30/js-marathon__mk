@@ -1,3 +1,18 @@
+import {
+  attack, 
+  createElement, 
+  changeHP, 
+  elHP, 
+  renderHP, 
+  playerWins, 
+  getRandom, 
+  createReloadButtom, 
+  enemyAttack, 
+  playerAttack, 
+  changeAndRenderHP, 
+  myFormatDate,
+} from './function.js';
+
 const arenas = document.querySelector('.arenas');
 const fightButton = document.querySelector('.button');
 const form = document.querySelector('.control');
@@ -74,188 +89,7 @@ const player2 = {
   renderHP,
 };
 
-function attack() {
-  console.log(this.name + ' ' + 'Fight...');
-}
 
-function createElement(tag, className) {
-  const elem = document.createElement(tag);
-  if (className) {
-    elem.classList.add(className);
-  }
-
-  return elem;
-}
-
-function createPlayer(player) {
-  const players = createElement('div', 'player' + player.player);
-  const progressbar = createElement('div', 'progressbar');
-  const character = createElement('div', 'character');
-  const life = createElement('div', 'life');
-  const name = createElement('div', 'name');
-  const img = createElement('img');
-
-  players.appendChild(progressbar);
-  players.appendChild(character);
-  progressbar.appendChild(life);
-  progressbar.appendChild(name);
-  character.appendChild(img);
-
-
-  life.style.width = player.hp + '%';
-  name.innerText = player.name;
-  img.src = player.img;
-
-  return players;
-}
-
-/** Уменьшает HP
- * @param {number} hit 
- */
-function changeHP(hit) {
-  if (this.hp >= 1) {
-    this.hp -= hit;
-  }
-
-  if (this.hp <= 0) {
-    this.hp = 0;
-  }
-}
-
-/** Возвращает HTMLElement
- * 
- * @returns {Element}
- */
-function elHP() {
-  return document.querySelector('.player'+ this.player +' .life');
-}
-
-function renderHP() {
-  this.elHP().style.width = this.hp + '%';
-}
-
-function playerWins(name) {
-  const loseTitle = createElement('div', 'winsTitle');
-  if (name) {
-    loseTitle.innerText = name + ' wins';
-  } else {
-    loseTitle.innerText = 'draw';
-  }
-
-  return loseTitle;
-}
-
-
-/**Генератор случайных числе
- * @param {number} num
- * @returns {number}
- */
-function getRandom(num) {
-  return Math.ceil(Math.random() * num);
-}
-
-/**Функция создаёт элемент
- * @param {string} tag
- * @param {string} className
- * @returns {HTMLElement}
- */
-function createReloadButtom() {
-  const reloadButtonDiv = createElement('div', 'reloadWrap');
-  const reloadButton = createElement('button', 'button');
-  reloadButton.innerText = 'Restart';
-
-  reloadButton.addEventListener('click', function() {
-    window.location.reload();
-  });
-
-  reloadButtonDiv.appendChild(reloadButton);
-  arenas.appendChild(reloadButtonDiv);
-}
-
-/**
- 
- * @returns {{hit: (string), defence: (string),value: number}}
- */
-function enemyAttack() {
-  let length = ATTACK.length;
-  let hit = ATTACK[getRandom(length) - 1];
-  let defence = ATTACK[getRandom(length) - 1];
-
-  return {
-    value: getRandom(HIT[hit]),
-    hit,
-    defence,
-  };
-}
-
-function playerAttack() {
-  let attack ={};
-
-  for (let i = 0; i < form.length; i++) {
-    let item = form[i];
-
-    if (item.checked === true && item.name === 'hit') {
-      attack[item.name] = item.value;
-      attack.value = getRandom(HIT[item.value]);
-    } else if (item.checked === true && item.name === 'defence') {
-      attack[item.name] = item.value;
-    }
-    item.checked = false;
-  }
-
-  return attack;
-}
-
-function changeAndRenderHP(player, attack) {
-  player.changeHP(attack.value);
-  player.renderHP();
-}
-
-function showResult() {
-  if (player1.hp === 0 || player2.hp === 0) {
-    fightButton.disabled = true;
-    createReloadButtom();
-  }
-
-  if (player1.hp === 0 && player1.hp < player2.hp) {
-    arenas.appendChild(playerWins(player2.name));
-    generateLogs('end', player2, player1);
-  } else if (player2.hp === 0 && player2.hp < player1.hp) {
-    arenas.appendChild(playerWins(player1.name));
-    generateLogs('end', player1, player2);
-  } else if (player1.hp <= 0 && player2.hp <= 0) {
-    arenas.appendChild(playerWins());
-    generateLogs('draw');
-  }
-}
-
-function myFormatDate() {
-  let date = new Date();
-
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  let day = date.getDate();
-  if (day < 10) {
-    date = `0${day}`;
-  }
-
-  let month = date.getMonth();
-  if (month < 10) {
-    month = `0${month}`;
-  }
-
-  let year = date.getFullYear();
-
-  return `${hours}:${minutes} ${day}.${month}.${year}`;
-}
 let timeDate = myFormatDate();
 
 generateLogs('start', player1, player2);
@@ -288,6 +122,44 @@ function generateLogs(type, playerHit, playerDef, hit, def) {
   }
 }
 
+export function createPlayer(player) {
+  const players = createElement('div', 'player' + player.player);
+  const progressbar = createElement('div', 'progressbar');
+  const character = createElement('div', 'character');
+  const life = createElement('div', 'life');
+  const name = createElement('div', 'name');
+  const img = createElement('img');
+
+  players.appendChild(progressbar);
+  players.appendChild(character);
+  progressbar.appendChild(life);
+  progressbar.appendChild(name);
+  character.appendChild(img);
+
+
+  life.style.width = player.hp + '%';
+  name.innerText = player.name;
+  img.src = player.img;
+
+  return players;
+}
+export function showResult() {
+  if (player1.hp === 0 || player2.hp === 0) {
+    fightButton.disabled = true;
+    createReloadButtom();
+  }
+
+  if (player1.hp === 0 && player1.hp < player2.hp) {
+    arenas.appendChild(playerWins(player2.name));
+    generateLogs('end', player2, player1);
+  } else if (player2.hp === 0 && player2.hp < player1.hp) {
+    arenas.appendChild(playerWins(player1.name));
+    generateLogs('end', player1, player2);
+  } else if (player1.hp <= 0 && player2.hp <= 0) {
+    arenas.appendChild(playerWins());
+    generateLogs('draw');
+  }
+}
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
