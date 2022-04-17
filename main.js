@@ -75,9 +75,6 @@ const HIT = {
   foot: 20,
 };
 
-/* let { headL } = HIT.lengt;
-console.log(headL); */
-
 const ATTACK = ['head', 'body', 'foot'];
 
 
@@ -153,70 +150,8 @@ let createPlayer = (player) => {
   return players;
 };
 
-function myFormatDate() {
-  let date = new Date();
-
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  let seconds = date.getSeconds();
-  if (seconds < 10) {
-    seconds = `0${seconds}`;
-  }
-
-  let day = date.getDate();
-  if (day < 10) {
-    date = `0${day}`;
-  }
-
-  let month = date.getMonth() +1;
-  if (month < 10) {
-    month = `0${month}`;
-  }
-
-  let year = date.getFullYear();
-
-  return `${hours}:${minutes} ${seconds} ${day}.${month}.${year}`;
-}
-
-let timeDate = myFormatDate();
 
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    timeDate = myFormatDate();
-    let botAttack = enemyAttack();
-    let myAttack = playerAttack();
-
-    if (botAttack.hit === myAttack.defence) {
-      generateLogs('defence', player2, player1, myAttack.value, 0);
-      console.log(myAttack.value);
-      changeAndRenderHP(player2, myAttack);
-    } else if (myAttack.hit === botAttack.defence) {
-      generateLogs('defence', player1, player2, botAttack.value, 0);
-      console.log(botAttack.value);
-      changeAndRenderHP(player1, botAttack);
-    } else {
-      changeAndRenderHP(player2, myAttack);
-      changeAndRenderHP(player1, botAttack);
-
-      console.log(myAttack.value);
-      console.log(botAttack.value);
-
-      generateLogs('hit', player2, player1, myAttack.value, botAttack.value);
-      generateLogs('hit', player1, player2, botAttack.value, myAttack.value);
-    }
-
-    showResult();
-  });
 
 
 
@@ -350,6 +285,7 @@ let appendZero = (num) => {
   }
 };
 
+//!==================================================================================
 
 let getTime = () => {
   const date = new Date();
@@ -367,7 +303,7 @@ let getTime = () => {
   appendZero(day);
 
   let month = date.getMonth() +1;
-  appendZero(months);
+  appendZero(month);
 
   let year = date.getFullYear();
 
@@ -382,18 +318,33 @@ let getTextLog = (type, playerName1, playerName2) => {
         .replace('[player1]', playerName1)
         .replace('[player2]', playerName2)
         .replace('[time]', getTime());
+     // break;
+     case 'end':
+      return LOGS[type][getRandom(LOGS[type].length - 1) - 1]
+      .replace('[playerWins]', playerName1)
+      .replace('[playerLose]', playerName2);
+    case 'hit':
+    case 'defence':
+      return LOGS[type][getRandom(LOGS[type].length - 1) - 1]
+      .replace('[playerDefence]', playerName1)
+      .replace('[playerKick]', playerName2);
+      //break;
+    case 'draw':
+      return LOGS[type];
+      //break;
   }
 };
 
-
-
-function generateLogs(type, player1, player2) {
-  //const text = LOGS[type][0].replase('[playerKick]', player1.name).replace('[playerDefence]', player2.name);
-  const text = getTextLog(type, player1.name, player2.name);
-  console.log(text);
+function generateLogs(type, player1, player2, valueAttack) {
+  let text = getTextLog(type, player1.name, player2.name);
+  if (type === 'hit') {
+    text = `${getTime()} ${text} - ${valueAttack} [${player2.hp}/100]`;
+  }
   const el = `<p>${text}</p>`;
   chat.insertAdjacentHTML('afterbegin', el);
 }
+
+
 
 
 let init = () => {
@@ -404,3 +355,50 @@ let init = () => {
 };
 
 init();
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  let botAttack = enemyAttack();
+  let myAttack = playerAttack();
+
+  if (myAttack.defence !== botAttack.hit) {
+      //changeAndRenderHP(player2, myAttack);
+      changeAndRenderHP(player1, botAttack);
+      generateLogs('hit', player1, player2, botAttack.value);
+      //generateLogs('hit', player1, player2);
+  } else {
+    generateLogs('defence', player2, player1);
+  }
+
+  if (botAttack.defence !== myAttack.hit) {
+    changeAndRenderHP(player2, myAttack);
+    generateLogs('hit', player2, player1);
+  } else {
+    generateLogs('defence', player1, player2, myAttack.value);
+  }
+
+
+
+/*   if (botAttack.hit === myAttack.defence) {
+    generateLogs('defence', player2, player1, myAttack.value, 0);
+    console.log(myAttack.value);
+    changeAndRenderHP(player2, myAttack);
+  } else if (myAttack.hit === botAttack.defence) {
+    generateLogs('defence', player1, player2, botAttack.value, 0);
+    console.log(botAttack.value);
+    changeAndRenderHP(player1, botAttack);
+  } else {
+    changeAndRenderHP(player2, myAttack);
+    changeAndRenderHP(player1, botAttack);
+
+    console.log(myAttack.value);
+    console.log(botAttack.value);
+
+    generateLogs('hit', player2, player1, myAttack.value, botAttack.value);
+    generateLogs('hit', player1, player2, botAttack.value, myAttack.value);
+  } */
+
+  showResult();
+});
+
