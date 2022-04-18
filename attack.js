@@ -1,8 +1,12 @@
-/**
- 
+import {HIT, ATTACK} from '/utils/index.js';
+import {getRandom} from './random.js';
+import {form} from './main.js';
+
+/** Атака противника (бота)
  * @returns {{hit: (string), defence: (string),value: number}}
  */
-export function enemyAttack() {
+ function enemyAttack() {
+
   let length = ATTACK.length;
   let hit = ATTACK[getRandom(length) - 1];
   let defence = ATTACK[getRandom(length) - 1];
@@ -14,16 +18,17 @@ export function enemyAttack() {
   };
 }
 
-export function playerAttack() {
+/** Атака игрока
+ * @returns {{hit: (string), defence: (string),value: number}}
+ */
+function playerAttack() {
   let attack ={};
 
-  for (let i = 0; i < form.length; i++) {
-    let item = form[i];
-
-    if (item.checked === true && item.name === 'hit') {
+  for (let item of form) {
+    if (item.checked && item.name === 'hit') {
       attack[item.name] = item.value;
       attack.value = getRandom(HIT[item.value]);
-    } else if (item.checked === true && item.name === 'defence') {
+    } else if (item.checked && item.name === 'defence') {
       attack[item.name] = item.value;
     }
     item.checked = false;
@@ -31,3 +36,8 @@ export function playerAttack() {
 
   return attack;
 }
+function attack() {
+  console.log(this.name + ' ' + 'Fight...');
+}
+
+export {attack, enemyAttack, playerAttack};

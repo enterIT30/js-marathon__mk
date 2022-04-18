@@ -1,4 +1,4 @@
-const logs = {
+const LOGS = {
   start: 'Часы показывали [time], когда [player1] и [player2] бросили вызов друг другу.',
   end: [
       'Результат удара [playerWins]: [playerLose] - труп',
@@ -37,3 +37,5 @@ const logs = {
   ],
   draw: 'Ничья - это тоже победа!'
 };
+
+export {LOGS};

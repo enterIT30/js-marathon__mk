@@ -1,7 +1,7 @@
 /** Уменьшает HP
  * @param {number} hit 
  */
-export function changeHP(hit) {
+ function changeHP(hit) { //! Почему (damage)
   if (this.hp >= 1) {
     this.hp -= hit;
   }
@@ -11,6 +11,22 @@ export function changeHP(hit) {
   }
 }
 
-export function renderHP() {
+/** Возвращает HTMLElement шкалы жизни
+ * @returns {Element}
+ */
+ function elHP() {
+  return document.querySelector(`.player${this.player} .life`);
+}
+
+/** Изменяет шкалу жизни (elHP), относительно результата changeHP
+ */
+function renderHP() {
   this.elHP().style.width = this.hp + '%';
 }
+
+function changeAndRenderHP(player, attack) {
+  player.changeHP(attack.value);
+  player.renderHP();
+}
+
+export {changeHP, elHP, renderHP, changeAndRenderHP};
