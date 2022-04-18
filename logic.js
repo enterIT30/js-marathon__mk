@@ -1,6 +1,6 @@
 import {enemyAttack, playerAttack} from './attack.js';
 import {changeAndRenderHP} from './change_hp.js';
-import {player1, player2} from './players.js';
+import {player1, player2} from './main.js';
 import {arenas} from './main.js';
 import {generateLogs} from './generate_logs.js';
 import {createReloadButtom, playerWins} from './create.js';
