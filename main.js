@@ -1,13 +1,13 @@
 import {makeMove, showResult} from './logic.js';
 import {generateLogs} from './generate_logs.js';
 import {createPlayer} from './create.js';
-
+import Player from './Player/index.js';
 
 
 const arenas = document.querySelector('.arenas');
 const form = document.querySelector('.control');
 
-import Player from '../Player/index.js';
+
 
 const player1 = new Player({
   player: 1,
