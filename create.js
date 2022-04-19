@@ -1,5 +1,5 @@
 import {arenas} from './main.js';
-import {createElement} from '../utils/index.js';
+import {createElement} from './utils/index.js';
 
 
 

@@ -1,5 +1,5 @@
-import {getRandom} from '../utils/index.js';
-import {HIT, ATTACK} from '../constants/index.js';
+import {getRandom} from './utils/index.js';
+import {HIT, ATTACK} from './constants/index.js';
 
 import {form} from './main.js';
 
