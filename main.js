@@ -1,6 +1,6 @@
 import {makeMove, showResult} from './logic.js';
 import {generateLogs} from './generate_logs.js';
-//import {createPlayer} from '/Player/index.js';
+import {createPlayer} from './create.js';
 
 
 
@@ -32,8 +32,9 @@ form.addEventListener('submit', function(e) {
 });
 
 let init = () => {
-  player1.createPlayer();
-  player2.createPlayer();
+  arenas.appendChild(createPlayer(player1));
+  arenas.appendChild(createPlayer(player2));
+
 
   generateLogs('start', player1, player2);
 };
@@ -41,6 +42,12 @@ let init = () => {
 init();
 
 export {form, arenas, player1, player2};
+
+
+
+
+
+
 
 
 

@@ -26,8 +26,8 @@ class Player {
     this.elHP().style.width = this.hp + '%';
   }
 
-
-  createPlayer() {
+/* 
+  createPlayer = () => {
     const player = createElement('div', this.selector);
     const progressbar = createElement('div', 'progressbar');
     const character = createElement('div', 'character');
@@ -47,10 +47,10 @@ class Player {
     img.src = this.img;
 
     const root = document.queryCommandValue(`.${this.rootSelector}`);
-    root.appendChild(player);
+    //$root.appendChild(player);
 
-    //return player;
-  }
+    //return $player;
+  } */
 }
 
 export default Player;

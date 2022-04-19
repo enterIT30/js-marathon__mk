@@ -37,8 +37,5 @@ function playerAttack() {
 
   return attack;
 }
-function attack() {
-  console.log(this.name + ' ' + 'Fight...');
-}
 
-export {attack, enemyAttack, playerAttack};
+export {enemyAttack, playerAttack};
