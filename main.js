@@ -7,7 +7,7 @@ import {createPlayer} from './create.js';
 const arenas = document.querySelector('.arenas');
 const form = document.querySelector('.control');
 
-import Player from '/Player/index.js';
+import Player from '../Player/index.js';
 
 const player1 = new Player({
   player: 1,
