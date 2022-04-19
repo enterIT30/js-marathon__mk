@@ -1,23 +1,8 @@
 import {arenas} from './main.js';
+import {createElement} from '../utils/index.js';
 
-/** Создаёт HTML-элемент
- * @param {string} tag
- * @param {string} className
- * @returns {HTMLElement}
- */
- let createElement = (tag, className) => {
-  const elem = document.createElement(tag);
-  if (className) {
-    elem.classList.add(className);
-  }
 
-  return elem;
-};
 
-/** Создает игрока
- * @param {Object} player
- * @returns {HTMLElement}
- */
 let createPlayer = ({player, hp, name, img}) => {
   const players = createElement('div', `player${player}`);
   const progressbar = createElement('div', 'progressbar');
@@ -39,6 +24,9 @@ let createPlayer = ({player, hp, name, img}) => {
 
   return players;
 };
+
+
+
 
 /** Возвращает заголовок с результатом поединка (имя победителя или ничья)
  * @param {string} name 
@@ -75,4 +63,5 @@ let playerWins = (name) => {
     arenas.appendChild(reloadButtonDiv);
   };
 
+  //export {createReloadButtom, playerWins};
   export {createPlayer, createReloadButtom, playerWins};

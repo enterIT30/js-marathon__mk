@@ -1,4 +1,4 @@
-import {createElement} from '/utils/index.js';
+//import {createElement} from '/utils/index.js';
 
 class Player {
   constructor(props) {
@@ -26,8 +26,13 @@ class Player {
     this.elHP().style.width = this.hp + '%';
   }
 
-/* 
-  createPlayer = () => {
+
+  //! Uncaught TypeError: root.appendChild is not a function
+  //!  at Player.createPlayer (index.js:55:10)
+  //!  at init (main.js:35:11)
+  //!  at main.js:44:1
+
+/*   createPlayer = () => {
     const player = createElement('div', this.selector);
     const progressbar = createElement('div', 'progressbar');
     const character = createElement('div', 'character');
@@ -47,9 +52,9 @@ class Player {
     img.src = this.img;
 
     const root = document.queryCommandValue(`.${this.rootSelector}`);
-    //$root.appendChild(player);
+    root.appendChild(player);
 
-    //return $player;
+    return player;
   } */
 }
 

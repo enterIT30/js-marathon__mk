@@ -32,6 +32,8 @@ form.addEventListener('submit', function(e) {
 });
 
 let init = () => {
+/*   player1.createPlayer();
+  player2.createPlayer(); */
   arenas.appendChild(createPlayer(player1));
   arenas.appendChild(createPlayer(player2));
 

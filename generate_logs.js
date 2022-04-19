@@ -1,5 +1,5 @@
-import {LOGS} from '/constants/index.js';
-import {getRandom, getTime} from '/utils/index.js';
+import {LOGS} from '../constants/index.js';
+import {getRandom, getTime} from '../utils/index.js';
 
 
 
